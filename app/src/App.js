@@ -1,4 +1,5 @@
 import React from 'react';
+import {UserCard} from './Components/UserCard'
 import './App.css';
 
 class App extends React.Component {
@@ -17,10 +18,9 @@ componentDidMount() {
 }
 
   render() {
-    console.log(this.state.data);
     return (
       <div className="App">
-        <p>{this.state.data.name}</p>
+        <UserCard data={this.state.data}/>
       </div>
     );
   }
