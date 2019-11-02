@@ -5,7 +5,6 @@ export const UserCard = props => {
     var link = `https://github.com/${props.data.login}?tab=repositories`
 
     return(
-        <div>
         <div className='profile'>
             <h2>{props.data.name}</h2>
             <h4>{props.data.location}</h4>
@@ -14,10 +13,6 @@ export const UserCard = props => {
             <p><span>Followers: {props.data.followers}</span> <span>Following: {props.data.following}</span></p>
             <p>Number of public repositories: {props.data.public_repos}</p>
             <a href={link}>Link to repositories</a>
-        </div>
-        <div className='followers'>
-
-        </div>
         </div>
     )
 
