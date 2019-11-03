@@ -1,16 +1,18 @@
 import React from 'react';
 import {UserCard} from './Components/UserCard';
 import {FriendList} from './Components/FriendList';
+import {Search} from './Components/Search';
 import './App.css';
 
 class App extends React.Component {
   state = {
     data: {},
-    followers: []
+    followers: [],
+    user: 'aaronw4'
   }
 
 componentDidMount() {
-  fetch("https://api.github.com/users/aaronw4")
+  fetch(`https://api.github.com/users/${this.state.user}`)
     .then(res => res.json())
     .then(res => {
       console.log(res);
@@ -20,13 +22,19 @@ componentDidMount() {
 }
 
 componentWillMount() {
-  fetch('https://api.github.com/users/aaronw4/followers')
+  fetch(`https://api.github.com/users/${this.state.user}/followers`)
     .then(res => res.json())
     .then(res =>  {
       console.log(res);
       this.setState({followers: res})
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err)); 
+}
+
+changeUser = login => {
+  this.setState({
+    user: login
+  })
 }
 
   render() {
@@ -34,6 +42,7 @@ componentWillMount() {
       <div className="App">
         <UserCard data={this.state.data}/>
         <FriendList followers={this.state.followers}/>
+        <Search search={this.state.user} changeUser={this.changeUser}/>
       </div>
     );
   }
