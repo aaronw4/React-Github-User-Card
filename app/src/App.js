@@ -21,6 +21,25 @@ componentDidMount() {
     .catch(err => console.log(err))
 }
 
+componentDidUpdate(prevProps, prevState) {
+  if (this.state.user !== prevState.user) {
+  fetch(`https://api.github.com/users/${this.state.user}`)
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      this.setState({data: res})
+    })
+    .catch(err => console.log(err));
+
+    fetch(`https://api.github.com/users/${this.state.user}/followers`)
+    .then(res => res.json())
+    .then(res =>  {
+      console.log(res);
+      this.setState({followers: res})
+    })
+    .catch(err => console.log(err));
+}}
+
 componentWillMount() {
   fetch(`https://api.github.com/users/${this.state.user}/followers`)
     .then(res => res.json())
@@ -42,7 +61,7 @@ changeUser = login => {
       <div className="App">
         <UserCard data={this.state.data}/>
         <FriendList followers={this.state.followers}/>
-        <Search search={this.state.user} changeUser={this.changeUser}/>
+        <Search changeUser={this.changeUser}/>
       </div>
     );
   }

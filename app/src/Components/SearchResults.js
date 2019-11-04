@@ -16,3 +16,14 @@ export class SearchResults extends React.Component {
     }
 
 }
+{this.state.searchText !== '' ?
+                    this.state.search.map(user => {
+                        return(
+                            <div>
+                                <button className='user' onClick={this.handleSubmit} value={user.login}>
+                                    {user.login}
+                                </button>
+                            </div>
+                        )
+                    }) : null
+}

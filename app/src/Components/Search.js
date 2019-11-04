@@ -1,10 +1,13 @@
 import React from 'react';
 
 export class Search extends React.Component {
-    state = {       
-        search: [],
-        searchText: '',
-        user:''
+    constructor(props) {
+        super(props);
+        this.state = {       
+            search: [],
+            searchText: '',
+            user:''
+            }
     }
 
     handleChanges = e => {
@@ -16,15 +19,30 @@ export class Search extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.setState({
-            user: e.target.value
-        })
+            user: this.state.searchText
+        })  
     }
+
+    handleClick = (e) => {
+        this.props.changeUser(e.target.value)
+    }
+    
+    componentDidUpdate(prevProps, prevState){
+        if (this.state.user !== prevState.user) {
+        fetch(`https://api.github.com/search/users?q=${this.state.user}`)
+        .then(res => res.json())
+        .then(res =>  {
+          console.log(res.items)
+          this.setState({search: res.items})
+        })
+        .catch(err => console.log(err))
+    }}
 
 
     render() {
         return(
             <div>
-                <form>
+                <form >
                     <input
                         onChange={this.handleChanges}
                         type='text'
@@ -33,18 +51,19 @@ export class Search extends React.Component {
                         className='search'
                         placeholder='Search Users'
                     />
-                </form>
+                    <button onClick={this.handleSubmit}>Submit</button>
+                </form>                
                 {this.state.searchText !== '' ?
                     this.state.search.map(user => {
                         return(
-                            <div>
-                                <button className='user' onClick={this.handleSubmit} value={user.login}>
+                            <div key={user.login}>
+                                <button className='user' onClick={this.handleClick} value={user.login}>
                                     {user.login}
                                 </button>
                             </div>
                         )
                     }) : null
-                }
+}
             </div>
         )
     }
