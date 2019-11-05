@@ -21,6 +21,16 @@ componentDidMount() {
     .catch(err => console.log(err))
 }
 
+componentWillMount() {
+  fetch(`https://api.github.com/users/${this.state.user}/followers`)
+    .then(res => res.json())
+    .then(res =>  {
+      console.log(res);
+      this.setState({followers: res})
+    })
+    .catch(err => console.log(err)); 
+}
+
 componentDidUpdate(prevProps, prevState) {
   if (this.state.user !== prevState.user) {
   fetch(`https://api.github.com/users/${this.state.user}`)
@@ -40,16 +50,6 @@ componentDidUpdate(prevProps, prevState) {
     .catch(err => console.log(err));
 }}
 
-componentWillMount() {
-  fetch(`https://api.github.com/users/${this.state.user}/followers`)
-    .then(res => res.json())
-    .then(res =>  {
-      console.log(res);
-      this.setState({followers: res})
-    })
-    .catch(err => console.log(err)); 
-}
-
 changeUser = login => {
   this.setState({
     user: login
@@ -60,7 +60,7 @@ changeUser = login => {
     return (     
       <div className="App">
         <UserCard data={this.state.data}/>
-        <FriendList followers={this.state.followers}/>
+        <FriendList followers={this.state.followers} changeUser={this.changeUser}/>
         <Search changeUser={this.changeUser}/>
       </div>
     );

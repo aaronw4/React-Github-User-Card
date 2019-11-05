@@ -24,7 +24,10 @@ export class Search extends React.Component {
     }
 
     handleClick = (e) => {
-        this.props.changeUser(e.target.value)
+        this.props.changeUser(e.target.value);
+        this.setState({
+            searchText:''
+        })
     }
     
     componentDidUpdate(prevProps, prevState){
@@ -63,7 +66,7 @@ export class Search extends React.Component {
                             </div>
                         )
                     }) : null
-}
+                }
             </div>
         )
     }

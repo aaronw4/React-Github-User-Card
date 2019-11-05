@@ -37,6 +37,7 @@ body {
 .followers {
     display: flex;
     width: 100%;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
@@ -47,4 +48,13 @@ body {
 
 .followerLogin {
     font-size: 24px;
+}
+
+.viewProfile {
+    height: 25px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #1074E7;
+    color: white;
+    border-radius: 10px;
 }
