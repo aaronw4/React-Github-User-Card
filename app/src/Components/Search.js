@@ -26,7 +26,8 @@ export class Search extends React.Component {
     handleClick = (e) => {
         this.props.changeUser(e.target.value);
         this.setState({
-            searchText:''
+            searchText:'',
+            search: []
         })
     }
     
