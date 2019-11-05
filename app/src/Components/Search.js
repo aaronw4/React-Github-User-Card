@@ -14,6 +14,11 @@ export class Search extends React.Component {
         this.setState({
             searchText: e.target.value
         })
+        if (this.state.searchText === '') {
+            this.setState({
+                search: []
+            })
+        }
     }
 
     handleSubmit = (e) => {
