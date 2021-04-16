@@ -19,9 +19,7 @@ componentDidMount() {
       this.setState({data: res})
     })
     .catch(err => console.log(err))
-}
 
-componentWillMount() {
   fetch(`https://api.github.com/users/${this.state.user}/followers`)
     .then(res => res.json())
     .then(res =>  {
