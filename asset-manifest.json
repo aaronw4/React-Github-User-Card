@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/React-Github-User-Card/static/css/main.f28e9ee4.chunk.css",
+    "main.js": "/React-Github-User-Card/static/js/main.24193b69.chunk.js",
+    "main.js.map": "/React-Github-User-Card/static/js/main.24193b69.chunk.js.map",
+    "runtime-main.js": "/React-Github-User-Card/static/js/runtime-main.187b4c1e.js",
+    "runtime-main.js.map": "/React-Github-User-Card/static/js/runtime-main.187b4c1e.js.map",
+    "static/js/2.7d66d9ae.chunk.js": "/React-Github-User-Card/static/js/2.7d66d9ae.chunk.js",
+    "static/js/2.7d66d9ae.chunk.js.map": "/React-Github-User-Card/static/js/2.7d66d9ae.chunk.js.map",
+    "index.html": "/React-Github-User-Card/index.html",
+    "precache-manifest.b873e46688d6c2f53c8d99f0da1d67fd.js": "/React-Github-User-Card/precache-manifest.b873e46688d6c2f53c8d99f0da1d67fd.js",
+    "service-worker.js": "/React-Github-User-Card/service-worker.js",
+    "static/css/main.f28e9ee4.chunk.css.map": "/React-Github-User-Card/static/css/main.f28e9ee4.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.187b4c1e.js",
+    "static/js/2.7d66d9ae.chunk.js",
+    "static/css/main.f28e9ee4.chunk.css",
+    "static/js/main.24193b69.chunk.js"
+  ]
+}
